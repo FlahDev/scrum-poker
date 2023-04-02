@@ -1,0 +1,13 @@
+// libs
+import {Children} from 'react';
+
+import { {{pascalCase contextName}}Context } from './context';
+
+export function {{pascalCase contextName}}ContextProvider  ({children}: Children) {
+
+  return (
+    <{{pascalCase contextName}}Context.Provider value={ } data-testid='test-{{camelCase contextName}}ContextProvider'>
+      {children}
+    </{{pascalCase contextName}}Context.Provider>
+  );
+};

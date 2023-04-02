@@ -7,7 +7,8 @@
     "build": "next build",
     "out:start": "next start",
     "lint": "eslint . --max-warnings=0 --ext .ts,.tsx",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "plop": "plop"
   },
   "dependencies": {
     "@types/node": "18.15.11",
@@ -29,6 +30,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
+    "inquirer-directory": "^2.2.0",
     "lint-staged": "^13.2.0",
     "plop": "^3.1.2",
     "prettier": "^2.8.7"

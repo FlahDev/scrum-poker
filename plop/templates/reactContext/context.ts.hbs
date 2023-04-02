@@ -1,0 +1,14 @@
+// libs
+import {createContext} from 'react'
+
+import { {{pascalCase contextName}}ContextType } from './types'
+
+const initialState: {{pascalCase contextName}}ContextType = {
+  // context properties values
+}
+
+const {{pascalCase contextName}}Context = createContext<{{pascalCase contextName}}ContextType>(initialState)
+
+{{pascalCase contextName}}Context.displayName = '{{pascalCase contextName}}Context'
+
+export { {{pascalCase contextName}}Context }

@@ -1,0 +1,14 @@
+// libs
+import {Box} from '@mui/material'
+
+import { {{pascalCase componentName}}Props } from './types'
+
+import { useCompose } from './compose'
+
+export function {{pascalCase componentName}} ({...props}: {{pascalCase componentName}}Props) {
+  const { } = useCompose()
+  
+  return (
+    <Box data-testid='test-{{camelCase componentName}}' />
+  );
+} 

@@ -1,0 +1,14 @@
+// libs
+import { render } from '@testing-library/react'
+
+import { {{pascalCase componentName}} } from './component'
+
+describe('Tests for {{pascalCase componentName}}', () => {
+  it('should render a {{pascalCase componentName}} component', () => {
+    const screen = render(<{{pascalCase componentName}} />)
+
+    const component = screen.getByTestId('test-{{camelCase componentName}}')
+
+    expect(component).toBeInTheDocument()
+  })
+})

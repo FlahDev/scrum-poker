@@ -1,0 +1,14 @@
+// libs
+import { render } from '@testing-library/react'
+
+import { {{pascalCase contextName}}ContextProvider } from './provider'
+
+describe('Tests for {{pascalCase contextName}}ContextProvider', () => {
+  it('should render a {{pascalCase contextName}}ContextProvider component', () => {
+    const screen = render(<{{pascalCase contextName}}ContextProvider />)
+
+    const component = screen.getByTestId('test-{{camelCase contextName}}ContextProvider')
+
+    expect(component).toBeInTheDocument()
+  })
+})

@@ -1,0 +1,12 @@
+// lib
+import { useContext } from 'react'
+
+import { {{pascalCase contextName}}Context } from './context'
+
+import { {{pascalCase contextName}}ContextType } from './types'
+
+export const use{{pascalCase contextName}}Context = ():{{pascalCase contextName}}ContextType => {
+  const { props } = useContext({{pascalCase contextName}}Context)
+
+  return { props }
+}
