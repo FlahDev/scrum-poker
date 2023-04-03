@@ -1,22 +1,27 @@
+// type-graphql config
+import 'reflect-metadata'
+
+// libs
 import { ApolloServer } from '@apollo/server'
 import { startServerAndCreateNextHandler } from '@as-integrations/next'
-import { gql } from 'graphql-tag'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-const resolvers = {
-  Query: {
-    hello: () => 'world'
-  }
+// graphql
+import { generateSchema } from '@/graphql'
+import depthLimit from 'graphql-depth-limit'
+
+export default async function StartServer(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const schema = await generateSchema()
+
+  const server = new ApolloServer({
+    schema,
+    validationRules: [depthLimit(7)]
+  })
+
+  const serverHandler = startServerAndCreateNextHandler(server)
+
+  return serverHandler(req, res)
 }
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`
-
-const server = new ApolloServer({
-  resolvers,
-  typeDefs
-})
-
-export default startServerAndCreateNextHandler(server)

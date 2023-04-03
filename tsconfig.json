@@ -18,7 +18,11 @@
     "paths": {
       "@/*": ["server/*"]
     },
-    "strictPropertyInitialization": false
+    // class without values (as a interface)
+    "strictPropertyInitialization": false,
+    // type-graphql settings
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
