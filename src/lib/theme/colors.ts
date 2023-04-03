@@ -24,7 +24,7 @@ export const WhiteColorsTheme: ColorsTheme = {
   placeholder: '#d4d8d9',
   disabled: '#dfdfdf',
   // text
-  textPrimary: '#77787B'
+  textPrimary: '#525252'
 }
 
 export const DarkColorsTheme: ColorsTheme = {
