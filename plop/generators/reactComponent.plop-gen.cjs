@@ -10,7 +10,8 @@
 
 module.exports = function (plop) {
   plop.setGenerator('React Component', {
-    description: 'New Post',
+    description:
+      'A React Component with jsx, compose, test, stories and optional styles',
     prompts: [
       {
         name: 'componentName',

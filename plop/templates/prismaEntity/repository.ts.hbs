@@ -1,0 +1,17 @@
+// prisma
+import { prisma } from '@/prisma'
+
+// entities
+import { {{pascalCase entityName}}Entity } from '@/entities'
+
+import { {{pascalCase entityName}}RepositoryType } from './{{lowerCase entityName}}.repository-type'
+
+export class {{pascalCase entityName}}Repository implements {{pascalCase entityName}}RepositoryType {
+  async create{{pascalCase entityName}}(data: {{pascalCase entityName}}Entity) {
+    const result = await prisma.{{lowerCase entityName}}.create({
+      data
+    })
+
+    return result
+  }
+}

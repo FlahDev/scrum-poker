@@ -10,7 +10,7 @@
 
 module.exports = function (plop) {
   plop.setGenerator('React Context', {
-    description: 'New Post',
+    description: 'A React context with provider, hook and test',
     prompts: [
       {
         name: 'contextName',

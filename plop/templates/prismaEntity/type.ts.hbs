@@ -1,0 +1,6 @@
+// entities
+import { {{pascalCase entityName}}Entity } from '@/entities'
+
+export interface {{pascalCase entityName}}RepositoryType {
+  create{{pascalCase entityName}}: (data: {{pascalCase entityName}}Entity) => Promise<any>
+}
