@@ -8,19 +8,25 @@
     "out:start": "next start",
     "lint": "eslint . --max-warnings=0 --ext .ts,.tsx",
     "prepare": "husky install",
-    "plop": "plop"
+    "plop": "plop",
+    "migrate": "npx prisma migrate dev --name"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.11",
+    "@apollo/server": "^4.5.0",
+    "@as-integrations/next": "^1.3.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.15",
+    "@prisma/client": "4.12.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
     "add": "^2.0.6",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "graphql": "^16.6.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -40,6 +46,7 @@
     "inquirer-directory": "^2.2.0",
     "lint-staged": "^13.2.0",
     "plop": "^3.1.2",
-    "prettier": "^2.8.7"
+    "prettier": "^2.8.7",
+    "prisma": "^4.12.0"
   }
 }
