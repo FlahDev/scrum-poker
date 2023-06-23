@@ -12,6 +12,7 @@ datasource db {
 
 model User {
   id        Int         @id @default(autoincrement())
+  email     String      @unique
   name      String
   Room      Room[]
   RoomUsers RoomUsers[]
@@ -19,6 +20,7 @@ model User {
 
 model Room {
   id          Int         @id @default(autoincrement())
+  hash        String
   createdAt   DateTime    @default(now())
   createdById Int
   createdBy   User        @relation(fields: [createdById], references: [id], onDelete: NoAction, onUpdate: NoAction)
