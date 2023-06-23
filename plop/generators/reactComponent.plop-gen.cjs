@@ -104,7 +104,7 @@ module.exports = function (plop) {
 
       actionsArray.push({
         type: 'add',
-        path: `src/${folderPath}/${fileName}.test.tsx`,
+        path: `src/${folderPath}/${String(data.componentName)}.test.tsx`,
         templateFile: 'plop/templates/reactComponent/test.tsx.hbs'
       })
 
