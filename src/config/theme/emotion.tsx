@@ -22,7 +22,7 @@ const CSSReset = (colors: ColorsTheme, fonts: FontTheme) => css`
   }
 
   body {
-    background: ${colors.backgroundPrimary};
+    background: ${colors.backgroundPrimary} !important;
   }
 
   body,
