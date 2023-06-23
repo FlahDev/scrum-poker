@@ -17,6 +17,7 @@ export interface TextStyles {
   italic?: boolean
   centerX?: boolean
   centerY?: boolean
+  align?: 'left' | 'right' | 'center' | 'justify'
 }
 
 export type TextProps = TextStyles & Omit<TypographyProps, 'color'>

@@ -11,14 +11,16 @@ export function BoldText({
   text,
   boldProps,
   weight,
-  textProps
+  textProps,
+  ...props
 }: BoldTextProps) {
   const { boldStyles, index, normal, textStyles } = useCompose({
     bold,
     text,
     boldProps,
     weight,
-    textProps
+    textProps,
+    ...props
   })
 
   function RenderText({ children }: Children) {

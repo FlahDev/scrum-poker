@@ -3,10 +3,11 @@ import { useMemo } from 'react'
 
 // lib
 import { useTheme } from 'lib/theme'
+import { WhiteColorsTheme } from 'lib/theme/colors'
 
 import { TextStyles, TextProps } from './types'
 
-export function useComposeTextStyles(
+export function ComposeTextStyles(
   {
     color,
     size,
@@ -19,9 +20,10 @@ export function useComposeTextStyles(
     breakWords,
     italic,
     centerX,
-    centerY
+    centerY,
+    align
   }: TextStyles,
-  colors: ReturnType<typeof useTheme>['colors']
+  colors = WhiteColorsTheme
 ) {
   const dftStyles: Record<string, any> = {}
 
@@ -36,6 +38,7 @@ export function useComposeTextStyles(
   if (italic) dftStyles.fontStyle = 'italic'
   if (centerX) dftStyles.textAlign = 'center'
   if (centerY) dftStyles.verticalAlign = 'middle'
+  if (align) dftStyles.textAlign = align
 
   if (extraStyles)
     return {
@@ -59,11 +62,12 @@ export function useCompose({
   breakWords,
   italic,
   centerX,
-  centerY
+  centerY,
+  align
 }: TextProps) {
   const { colors } = useTheme()
 
-  const parsedStyles = useComposeTextStyles(
+  const parsedStyles = ComposeTextStyles(
     {
       color,
       size,
@@ -76,7 +80,8 @@ export function useCompose({
       breakWords,
       italic,
       centerX,
-      centerY
+      centerY,
+      align
     },
     colors
   )

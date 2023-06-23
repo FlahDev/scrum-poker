@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 // lib
 import { useTheme } from 'lib/theme'
 
-import { useComposeTextStyles } from '../Text'
+import { ComposeTextStyles } from '../Text'
 
 import { BoldTextProps } from './types'
 
@@ -12,8 +12,9 @@ export function useCompose({
   weight,
   text,
   bold,
-  boldProps,
-  textProps
+  boldProps = {},
+  textProps = {},
+  ...props
 }: BoldTextProps) {
   const { colors } = useTheme()
 
@@ -22,8 +23,9 @@ export function useCompose({
 
   const boldStyles = useMemo(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const parsed = useComposeTextStyles(
+    const parsed = ComposeTextStyles(
       {
+        ...props,
         ...boldProps,
         weight: weight || boldProps?.weight
       },
@@ -36,11 +38,11 @@ export function useCompose({
       ...parsed,
       ...styleResolve
     }
-  }, [boldProps, weight])
+  }, [boldProps, weight, props])
 
   const textStyles = useMemo(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const parsed = textProps ? useComposeTextStyles(textProps, colors) : {}
+    const parsed = ComposeTextStyles({ ...props, ...textProps }, colors)
 
     const styleResolve = textProps?.style ? { ...textProps.style } : {}
 
@@ -48,7 +50,7 @@ export function useCompose({
       ...parsed,
       ...styleResolve
     }
-  }, [boldProps, weight])
+  }, [boldProps, props])
 
   return {
     normal,

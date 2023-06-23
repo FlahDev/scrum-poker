@@ -9,7 +9,7 @@ type BoldTextTypographyProps = Omit<
 > &
   TextProps
 
-export interface BoldTextProps {
+export interface BoldTextProps extends TextStyles {
   text: string
   bold: string
   textProps?: BoldTextTypographyProps

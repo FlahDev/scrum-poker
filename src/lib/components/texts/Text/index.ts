@@ -1,3 +1,3 @@
 export * from './component'
 export * from './types'
-export { useComposeTextStyles } from './compose'
+export { ComposeTextStyles as ComposeTextStyles } from './compose'
