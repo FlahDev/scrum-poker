@@ -4,20 +4,51 @@ import { prisma } from '@/prisma'
 // entities
 import { UserEntity } from '@/entities'
 
+// errors
+import { CreationNotAllowed } from './errors'
+
 import { UserRepositoryType } from './user.repository-type'
 
 export class UserRepository implements UserRepositoryType {
-  async createUser(data: UserEntity) {
-    const result = await prisma.user.create({
-      data
+  async checkExistsWithEmail(email: string): Promise<boolean> {
+    if (!email) return false
+
+    const found = await prisma.user.findFirst({
+      where: {
+        email
+      }
     })
 
-    return result
+    return Boolean(found)
   }
 
-  async listAll(): Promise<UserEntity[]> {
-    const result = await prisma.user.findMany()
+  async checkExistsWithId(id: string): Promise<boolean> {
+    if (!id || !+id) return false
 
-    return result.map((item) => new UserEntity(item, item.id))
+    const found = await prisma.user.findFirst({
+      where: {
+        id: +id
+      }
+    })
+
+    return Boolean(found)
+  }
+
+  async createUser(data: UserEntity) {
+    const found = await prisma.user.findFirst({
+      where: {
+        email: data.email
+      }
+    })
+
+    if (found) throw new CreationNotAllowed(data.email)
+
+    return await prisma.user.create({
+      data
+    })
+  }
+
+  async listAll() {
+    return await prisma.user.findMany()
   }
 }

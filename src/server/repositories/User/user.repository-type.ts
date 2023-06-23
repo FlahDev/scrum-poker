@@ -3,5 +3,7 @@ import { UserEntity } from '@/entities'
 
 export interface UserRepositoryType {
   createUser: (data: UserEntity) => Promise<any>
-  listAll: () => Promise<UserEntity[]>
+  checkExistsWithEmail: (email: string) => Promise<boolean>
+  checkExistsWithId: (id: string) => Promise<boolean>
+  listAll: () => Promise<any[]>
 }

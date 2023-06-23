@@ -6,6 +6,6 @@ import { UserResolver } from './user'
 export const generateSchema = async () => {
   return buildSchema({
     resolvers: [UserResolver],
-    validate: true
+    validate: false
   })
 }
