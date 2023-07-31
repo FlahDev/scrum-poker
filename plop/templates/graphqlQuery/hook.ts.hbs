@@ -1,0 +1,31 @@
+// libs
+import { useMemo } from 'react'
+
+import { {{constantCase queryName}}_{{constantCase queryType}} } from './{{camelCase queryName}}.{{lowerCase queryType}}'
+import { {{pascalCase queryName}}Data, {{pascalCase queryName}}Vars } from './{{camelCase queryName}}.{{lowerCase queryType}}-type'
+
+import { QueryProps, QueryResult } from 'api/graphql/types'
+
+import { useCreateMutation } from 'api/graphql/useCreateMutation.hook'
+
+export const use{{pascalCase queryName}} = (
+  props: QueryProps<{{pascalCase queryName}}Data>
+): QueryResult<{{pascalCase queryName}}Data, {{pascalCase queryName}}Vars> => {
+  const { data, ...rest } = useCreateMutation<{{pascalCase queryName}}Data, {{pascalCase queryName}}Vars>(
+    {{constantCase queryName}}_{{constantCase queryType}},
+    props
+  )
+
+  const result = useMemo<{{pascalCase queryName}}Data | undefined>(() => {
+    if (data?.{{camelCase queryName}}) {
+      return data
+    }
+
+    return undefined
+  }, [data])
+
+  return {
+    ...rest,
+    result
+  }
+}

@@ -1,0 +1,6 @@
+import { gql } from '@apollo/client'
+
+export const {{constantCase queryName}}_{{constantCase queryType}} = gql`
+  {{lowerCase queryType}} {{pascalCase queryName}}($data: any!) {
+  }
+`
