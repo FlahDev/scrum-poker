@@ -7,7 +7,9 @@ type BoldTextTypographyProps = Omit<
   TypographyProps,
   'children' | 'component' | 'color'
 > &
-  TextProps
+  TextProps & {
+    href?: string
+  }
 
 export interface BoldTextProps extends TextStyles {
   text: string

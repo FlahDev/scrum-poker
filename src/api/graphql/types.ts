@@ -3,6 +3,7 @@ export interface QueryProps<TData extends any> {
   onError?: (error: any) => void
   onRefetch?: () => void
   onHasCompletedOnce?: () => void
+  jumpFirstCall?: boolean
 }
 
 export interface QueryResult<TData extends any, TVars extends any> {

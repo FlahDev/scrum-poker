@@ -89,7 +89,8 @@ export function RegisterUserForm(props: RegisterUserFormProps) {
               boldProps={{
                 decoration: 'underline',
                 color: 'primary',
-                weight: 6
+                weight: 6,
+                href: '/auth/login'
               }}
             />
           </Grid>

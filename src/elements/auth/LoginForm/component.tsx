@@ -82,7 +82,8 @@ export function LoginForm(props: LoginFormProps) {
               boldProps={{
                 decoration: 'underline',
                 color: 'primary',
-                weight: 6
+                weight: 6,
+                href: '/user/register'
               }}
             />
           </Grid>

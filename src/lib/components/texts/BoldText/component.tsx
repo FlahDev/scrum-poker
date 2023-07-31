@@ -1,10 +1,21 @@
 // libs
 import { Children } from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Link } from '@mui/material'
+import NextLink from 'next/link'
 
 import { BoldTextProps } from './types'
 
 import { useCompose } from './compose'
+
+function DecideComponent({
+  href,
+  ...rest
+}: Required<BoldTextProps>['boldProps']) {
+  if (href)
+    return <Link {...rest} href={href} component={NextLink} ref={undefined} />
+
+  return <Typography {...rest} />
+}
 
 export function BoldText({
   bold,
@@ -25,29 +36,31 @@ export function BoldText({
 
   function RenderText({ children }: Children) {
     return (
-      <Typography
+      <DecideComponent
         align="left"
         component="p"
         {...(textProps as any)}
         style={textStyles}
+        href={textProps?.href}
         data-testid="test-boldTextNormal"
       >
         {children}
-      </Typography>
+      </DecideComponent>
     )
   }
 
   function RenderBold({ children }: Children) {
     return (
-      <Typography
+      <DecideComponent
         align="left"
         component="b"
         {...(textProps as any)}
         style={boldStyles}
+        href={boldProps?.href}
         data-testid="test-boldText"
       >
         {children}
-      </Typography>
+      </DecideComponent>
     )
   }
 
