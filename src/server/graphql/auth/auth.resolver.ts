@@ -15,9 +15,9 @@ export class AuthResolver {
   async login(@Arg('data') data: LoginInputModel): Promise<LoginOutputModel> {
     const authRepository = new AuthRepository()
 
-    const createUserUseCase = new LoginUseCase(authRepository)
+    const loginUseCase = new LoginUseCase(authRepository)
 
-    const result = await createUserUseCase.execute(data.email)
+    const result = await loginUseCase.execute(data.email)
 
     return { token: result }
   }

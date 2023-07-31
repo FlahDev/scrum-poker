@@ -8,9 +8,11 @@ declare module 'react' {
 import { Children } from 'react'
 import { CssBaseline } from '@mui/material'
 
-import { AppProvider } from './provider'
-import { ToastContainer } from 'react-toastify'
+import { AuthProvider } from 'auth/provider'
 
+import { AppProvider } from './provider'
+
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export function App({ children }: Children) {
@@ -18,7 +20,7 @@ export function App({ children }: Children) {
     <AppProvider>
       <ToastContainer />
       <CssBaseline />
-      {children}
+      <AuthProvider>{children}</AuthProvider>
     </AppProvider>
   )
 }

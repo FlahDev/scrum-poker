@@ -20,8 +20,6 @@ export class LoginUseCase {
 
     if (!result) throw new UnauthorizedError()
 
-    const { email } = result
-
-    return AuthSign.getInstance().sign(email)
+    return AuthSign.getInstance().sign(result)
   }
 }

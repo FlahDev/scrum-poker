@@ -2,7 +2,7 @@ const tokenKey = process.env.NEXT_PUBLIC_AUTH_TOKEN || ''
 
 export const SetUserAuthToken = (token: string): boolean => {
   if (token && window && tokenKey) {
-    localStorage.setItem(tokenKey, token)
+    sessionStorage.setItem(tokenKey, token)
 
     return true
   }
@@ -11,7 +11,11 @@ export const SetUserAuthToken = (token: string): boolean => {
 }
 
 export const GetUserAuthToken = (): string | null => {
-  const token = localStorage.getItem(tokenKey)
+  if (window && tokenKey) {
+    const token = sessionStorage.getItem(tokenKey)
 
-  return token || null
+    return token || null
+  }
+
+  return null
 }

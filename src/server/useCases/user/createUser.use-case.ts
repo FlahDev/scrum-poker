@@ -7,19 +7,20 @@ import { UserRepositoryType } from '@/repositories'
 import { UserInputModel } from '@/graphql/user/models/createUser'
 
 import { UserAlreadyExists } from './errors'
+import { BadRequestError } from '@/errors'
 
 export class CreateUserUseCase {
   constructor(private userRepository: UserRepositoryType) {}
 
-  async execute(data: UserInputModel) {
+  async execute(data: UserInputModel): Promise<UserEntity> {
     const user = new UserEntity(data)
 
-    if (user.validate()) {
-      const exists = await this.userRepository.checkExistsWithEmail(user.email)
+    if (!user.validate()) throw new BadRequestError('Invalid user data.')
 
-      if (exists) throw new UserAlreadyExists(user.email)
+    const exists = await this.userRepository.checkExistsWithEmail(user.email)
 
-      return await this.userRepository.createUser(user)
-    }
+    if (exists) throw new UserAlreadyExists(user.email)
+
+    return await this.userRepository.createUser(user)
   }
 }

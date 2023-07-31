@@ -1,13 +1,12 @@
 import { AuthCheckerInterface, ResolverData } from 'type-graphql'
-import { verify } from 'jsonwebtoken'
 
 import { UnauthorizedError } from './error'
 import { NextApiRequest } from 'next'
 
-import { AuthConfig } from './config'
+import { AuthSign } from './sign'
 
 export class AuthChecker implements AuthCheckerInterface<any> {
-  async check(data: ResolverData<NextApiRequest>) {
+  public async check(data: ResolverData<NextApiRequest>) {
     const authHeader = data.context?.headers?.authorization
 
     if (!authHeader) {
@@ -17,9 +16,9 @@ export class AuthChecker implements AuthCheckerInterface<any> {
     const [, token] = authHeader.split(' ')
 
     try {
-      const decoded = verify(token, AuthConfig.secret)
+      const decoded = AuthSign.getInstance().decode(token)
 
-      return Boolean(decoded)
+      return Boolean(decoded?.id)
     } catch {
       throw new UnauthorizedError('Invalid token provided.')
     }

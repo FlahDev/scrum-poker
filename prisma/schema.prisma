@@ -20,11 +20,13 @@ model User {
 
 model Room {
   id          Int         @id @default(autoincrement())
-  hash        String
+  hash        String      @unique
   createdAt   DateTime    @default(now())
   createdById Int
   createdBy   User        @relation(fields: [createdById], references: [id], onDelete: NoAction, onUpdate: NoAction)
   RoomUsers   RoomUsers[]
+  isActive    Boolean     @default(false)
+  name        String
 }
 
 model RoomUsers {

@@ -22,7 +22,7 @@ export function useCompose() {
 
       SetUserAuthToken(token)
 
-      return setTimeout(() => push('/home'), 2000)
+      return setTimeout(() => push('/home'), 100)
     }
 
     toast.error('Falha na autenticação!')

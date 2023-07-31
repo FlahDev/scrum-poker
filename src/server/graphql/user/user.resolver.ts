@@ -19,9 +19,7 @@ export class UserResolver {
 
     const createUserUseCase = new CreateUserUseCase(userRepository)
 
-    const result = await createUserUseCase.execute(data)
-
-    return result
+    return (await createUserUseCase.execute(data)) as UserOutputModel
   }
 
   @Authorized()
