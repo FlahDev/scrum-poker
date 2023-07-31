@@ -1,4 +1,4 @@
-import { ProcessError } from '../../../config/processError'
+import { ProcessError } from '@/config/processError'
 
 export class UserAlreadyExists extends ProcessError {
   constructor(email: string) {

@@ -1,5 +1,5 @@
 // graphql
-import { Resolver, Query, Mutation, Arg } from 'type-graphql'
+import { Resolver, Query, Mutation, Arg, Authorized } from 'type-graphql'
 
 // repositories
 import { UserRepository } from '@/repositories'
@@ -24,6 +24,7 @@ export class UserResolver {
     return result
   }
 
+  @Authorized()
   @Query(() => [UserOutputModel])
   async listAllUsers(): Promise<UserOutputModel[]> {
     const userRepository = new UserRepository()
