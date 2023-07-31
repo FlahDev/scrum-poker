@@ -21,7 +21,9 @@ export default async function StartServer(
     validationRules: [depthLimit(7)]
   })
 
-  const serverHandler = startServerAndCreateNextHandler(server)
+  const serverHandler = startServerAndCreateNextHandler(server, {
+    context: async (ctx) => ctx
+  })
 
   return serverHandler(req, res)
 }
