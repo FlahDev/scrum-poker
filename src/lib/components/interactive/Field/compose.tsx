@@ -159,7 +159,8 @@ export function useCompose({
     ) : undefined,
     type: 'text',
     onChange: handleChangeIn,
-    onPaste: handlePaste
+    onPaste: handlePaste,
+    value: props.value || ''
   }
 
   return {

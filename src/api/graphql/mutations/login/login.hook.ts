@@ -9,11 +9,11 @@ import { QueryProps, QueryResult } from 'api/graphql/types'
 import { useCreateMutation } from 'api/graphql/useCreateMutation.hook'
 
 export const useLogin = (
-  props: QueryProps<LoginData>
+  props?: QueryProps<LoginData>
 ): QueryResult<LoginData, LoginVars> => {
   const { data, ...rest } = useCreateMutation<LoginData, LoginVars>(
     LOGIN_MUTATION,
-    props
+    props || {}
   )
 
   const result = useMemo<LoginData | undefined>(() => {

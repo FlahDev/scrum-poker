@@ -1,5 +1,4 @@
 export interface LoginFormEvent {
-  userName: string
   userEmail: string
 }
 
