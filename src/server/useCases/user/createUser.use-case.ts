@@ -4,7 +4,7 @@ import { UserEntity } from '@/entities'
 // repositories
 import { UserRepositoryType } from '@/repositories'
 
-import { UserInputModel } from '@/graphql/user/models/createUser'
+import { UserInputModel } from '@/presentation/graphql/user/models/createUser'
 
 import { UserAlreadyExists } from './errors'
 import { BadRequestError } from '@/errors'

@@ -7,7 +7,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // graphql
-import { generateSchema } from '@/graphql'
+import { generateSchema } from '@/presentation/graphql'
 import depthLimit from 'graphql-depth-limit'
 
 import { ContextType } from '@/auth/types'

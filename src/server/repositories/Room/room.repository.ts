@@ -30,7 +30,7 @@ export class RoomRepository implements RoomRepositoryType {
         name: data.name,
         createdById: createdByUser.id,
         hash: uuidv4(),
-        isAcitve: false
+        isActive: false
       }
     })
 

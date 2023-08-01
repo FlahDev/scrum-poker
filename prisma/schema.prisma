@@ -11,28 +11,34 @@ datasource db {
 }
 
 model User {
-  id        Int         @id @default(autoincrement())
-  email     String      @unique
-  name      String
-  Room      Room[]
-  RoomUsers RoomUsers[]
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String
+  // um usuário pode criar 0 ou n salas
+  rooms    Room[]
+  // um usuário pode entrar em várias sessões
+  sessions Session[]
 }
 
 model Room {
-  id          Int         @id @default(autoincrement())
-  hash        String      @unique
-  createdAt   DateTime    @default(now())
+  id          Int       @id @default(autoincrement())
+  hash        String    @unique
+  createdAt   DateTime  @default(now())
   createdById Int
-  createdBy   User        @relation(fields: [createdById], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  RoomUsers   RoomUsers[]
-  isActive    Boolean     @default(false)
+  // uma sala eh criada por um usuário
+  createdBy   User      @relation(fields: [createdById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  isActive    Boolean   @default(false)
   name        String
+  sessions    Session[]
 }
 
-model RoomUsers {
-  id     Int  @id @default(autoincrement())
-  roomId Int
-  userId Int
-  room   Room @relation(fields: [roomId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  user   User @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+model Session {
+  id       Int     @id @default(autoincrement())
+  // uma sessão possui uma sala
+  roomId   Int
+  room     Room    @relation(fields: [roomId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  // uma sessão possui 0 ou n usuários
+  userId   Int
+  user     User    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  isOnline Boolean @default(false)
 }
